@@ -1,0 +1,55 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="{% static 'photopage/js/js.js' %}"></script>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'first/css/csskurcach.css' %}">
+
+</head>
+<body>
+    <div class="nav">
+      <h1>ФОТОЦЕНЩИК</h1>
+      <a href="{% url 'photorate:photo_rate' %}">Оценить фото</a>
+      <a href="C:\Users\Алексей\Documents\workhtml\danyKursach\top100.html">Топ-100</a>
+      <a href="#">О нас</a>
+       {% if user.is_authenticated %}
+    <a id="a1"href="{% url 'photorate:create' %}"><button type="button" name="button">Опубликовать фото</button> </a>
+        {% else %}
+          <a id="a1" href="{% url 'users:log' %}"><button type="button" name="button">Опубликовать фото</button></a>
+    {% endif %}
+
+
+    </div>
+     {% if not user.is_authenticated %}
+    <div class="notlog">
+        <h1>Вы не вошли в аккаунт!</h1>
+        <p>Для использования сайта <a href="{% url 'users:log' %}">войдите в аккаунт</a></p>
+{% endif %}
+    </div>
+    <div class="photos">
+        {% for i in post %}
+      <div class="photo">
+        <img src="{{ i.photo.url }}" alt="">
+        <h3>{{ i.title }}</h3>
+          <h1>{{ i.id }}</h1>
+          </form>
+        <p>{{ i.author }}</p>
+  <div class="rating-buttons">
+                    <button class="btn btn-sm btn-primary" data-article="{{ i.id }}" data-value="1">Лайк</button>
+                    <button class="btn btn-sm btn-secondary" data-article="{{ i.id }}" data-value="-1">Дизлайк</button>
+                    <button class="btn btn-sm btn-secondary rating-sum">{{ i.get_sum_rating }}</button>
+                </div>
+    </div>
+
+    </div>
+            {% endfor %}
+    <script src="{% static 'photorate/js/js.js' %}"></script>
+        <script src="{% static 'photorate/js/jaja.js' %}"></script>
+    <div class="footer">
+
+    </div>
+</body>
+</html>

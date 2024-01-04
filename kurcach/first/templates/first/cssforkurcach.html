@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="{% static 'first/css/csskurcach.css' %}">
+  </head>
+  <body>
+    <div class="black">
+      <div class="nav">
+        <h1>ФОТОЦЕНЩИК</h1>
+        <a href="{% url 'photorate:photo_rate' %}">Оценить фото</a>
+        <a href="#">Топ-100</a>
+        <a href="#">О нас</a>
+        {% if user.is_authenticated %}
+    <a id="a1"href="{% url 'photorate:create' %}"><button type="button" name="button">Хочу оценку!</button> </a>
+        {% else %}
+          <a id="a1" href="{% url 'users:log' %}"><button type="button" name="button">Хочу оценку!</button></a>
+    {% endif %}
+      </div>
+      <div class="rek">
+        <div class="rek-img">
+          <img src="https://otvet.imgsmail.ru/download/u_a5fc50976166897394ca4aba4170cab8_800.jpg" alt="">
+        </div>
+        <div class="rek-text">
+          <h1>Сделай фото</h1>
+          <p>Мы сразу запостим его и пользователи смогут его оценить</p>
+          {% if user.is_authenticated %}
+          <a href="{% url 'photorate:photo_rate' %}"><button type="button" name="button">Запостить</button></a>
+          {% else %}
+          <a href="{% url 'users:log' %}"><button type="button" name="button">Запостить</button></a>
+          {% endif %}
+        </div>
+      </div>
+      </div>
+<div class="rwe32">
+  <div class="text32">
+    <h1>Мы крутые</h1>
+    <p>ЮЛА ЮЛА ЮЛА ЮЛ БЛА БЛА БЛА</p>
+      <img src="https://otvet.imgsmail.ru/download/u_a5fc50976166897394ca4aba4170cab8_800.jpg" alt="">
+  </div>
+  <div class="text32">
+    <h1>Мы крутые</h1>
+    <p>ЮЛА ЮЛА ЮЛА ЮЛ БЛА БЛА БЛА</p>
+    <img src="https://otvet.imgsmail.ru/download/u_a5fc50976166897394ca4aba4170cab8_800.jpg" alt="">
+  </div>
+  <div class="text32">
+    <h1>Мы крутые</h1>
+    <p>ЮЛА ЮЛА ЮЛА ЮЛ БЛА БЛА БЛА</p>
+      <img src="https://otvet.imgsmail.ru/download/u_a5fc50976166897394ca4aba4170cab8_800.jpg" alt="">
+  </div>
+</div>
+<div class="footer">
+
+</div>
+  </body>
+</html>

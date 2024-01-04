@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'first/css/csskurcach.css' %}">
+</head>
+<body>
+    <div class="nav">
+      <h1>ФОТОЦЕНЩИК</h1>
+ <a href="{% url 'photorate:photo_rate' %}">Оценить фото</a>
+        <a href="#">Топ-100</a>
+        <a href="#">О нас</a>
+       {% if user.is_authenticated %}
+    <a id="a1"href="{% url 'photorate:create' %}"><button type="button" name="button">Хочу оценку!</button> </a>
+        {% else %}
+          <a id="a1" href="{% url 'users:log' %}"><button type="button" name="button">Хочу оценку!</button></a>
+    {% endif %}
+    </div>
+
+    <div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+    <h2 class="active"> Публикация Фото </h2>
+
+
+    <!-- Login Form -->
+
+
+       <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.title }}
+           {{ form.author }}
+           {{ form.photo }}
+         <input type="submit" class="fadeIn fourth" value="Опубликовать">
+</form>
+
+
+    <!-- Remind Passowrd -->
+    <div id="formFooter">
+      <a href="{% url 'photorate:photo_rate' %}">Отмена</a>
+    </div>
+
+  </div>
+</div>
+<div class="footer2">
+
+</div>
+<a href="{% url 'photorate:photo_rate' %}">Топ-100</a>
+</body>
+</html>
