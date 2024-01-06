@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+     <link rel="stylesheet" href="{% static 'first/css/csskurcach.css' %}">
+</head>
+<body>
+    <div class="nav">
+       <a href="{% url 'first_page' %}"><h1>Фото-Оценщик</h1></a>
+        <a href="{% url 'photorate:photo_rate' %}">Оценить фото</a>
+        <a href="{% url 'first_page' %}">О нас</a>
+        <a href="#">{{ request.user.username }}</a>
+        {% if user.is_authenticated %}
+                <a href="{% url 'users:logout' %}">Выйти</a>
+    <a id="a2"href="{% url 'photorate:create' %}"><button type="button" name="button">Хочу оценку!</button> </a>
+        {% else %}
+          <a id="a1" href="{% url 'users:log' %}"><button type="button" name="button">Хочу оценку!</button></a>
+    {% endif %}
+    </div>
+    <div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+    <h2 class="active"> Вход </h2>
+
+
+    <!-- Login Form -->
+
+
+      <form method="post" action="{% url 'users:log' %}">
+               {% csrf_token %}
+              <p>{{ form.username }}</p>
+          <p>{{ form.password }}</p>
+                     <input type="submit" class="fadeIn fourth" value="Log In">
+           </form>
+
+
+    <!-- Remind Passowrd -->
+    <div id="formFooter">
+      <a href="{% url 'users:reg' %}">Ещё нет аккаунта?</a>
+    </div>
+
+  </div>
+</div>
+<div class="footer2">
+    <h3>Обратная связь</h3>
+  <a href="#">Вконтакте</a><br>
+   <a href="#">Телеграмм</a>
+<p>© 2024 Все права защищены.</p>
+</div>
+</body>
+</html>

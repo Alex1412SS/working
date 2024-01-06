@@ -1,0 +1,62 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="{% static 'first/css/csskurcach.css' %}">
+  </head>
+  <body>
+    <div class="black">
+      <div class="nav">
+        <a href="{% url 'first_page' %}"><h1>Фото-Оценщик</h1></a>
+        <a href="{% url 'photorate:photo_rate' %}">Оценить фото</a>
+        <a href="{% url 'first_page' %}">О нас</a>
+        <a href="#">{{ request.user.username }}</a>
+        {% if user.is_authenticated %}
+                <a href="{% url 'users:logout' %}">Выйти</a>
+    <a id="a2"href="{% url 'photorate:create' %}"><button type="button" name="button">Хочу оценку!</button> </a>
+        {% else %}
+          <a id="a1" href="{% url 'users:log' %}"><button type="button" name="button">Хочу оценку!</button></a>
+    {% endif %}
+      </div>
+      <div class="rek">
+        <div class="rek-img">
+          <img src="https://otvet.imgsmail.ru/download/u_a5fc50976166897394ca4aba4170cab8_800.jpg" alt="">
+        </div>
+        <div class="rek-text">
+          <h1>Сделай фото</h1>
+          <p>Мы сразу запостим его и пользователи смогут его оценить</p>
+          {% if user.is_authenticated %}
+          <a href="{% url 'photorate:photo_rate' %}"><button type="button" name="button">Запостить</button></a>
+          {% else %}
+          <a href="{% url 'users:log' %}"><button type="button" name="button">Запостить</button></a>
+          {% endif %}
+        </div>
+      </div>
+      </div>
+<div class="rwe32">
+  <div class="text32">
+    <h1>Быстро</h1>
+    <p>Быстрая публикация и оценка фото</p>
+      <img src="https://cdn4.iconfinder.com/data/icons/household-appliance-bl-1/32/kitchen-and-household-BL.1-39-1024.png" alt="">
+  </div>
+  <div class="text32">
+    <h1>Честно</h1>
+    <p>Каждая оценка прозрачна для пользователя</p>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Accept.svg/1200px-Accept.svg.png" alt="">
+  </div>
+  <div class="text32">
+    <h1>Бесплатно</h1>
+    <p>Мы не берём денег за сервис</p>
+      <img src="https://freepngimg.com/thumb/hands/108-money-in-hand-png-image-dollars-in-hands.png" alt="">
+  </div>
+</div>
+<div class="footer">
+    <h3>Обратная связь</h3>
+  <a href="#">Вконтакте</a><br>
+   <a href="#">Телеграмм</a>
+<p>© 2024 Все права защищены.</p>
+</div>
+  </body>
+</html>

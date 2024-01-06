@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+      <link rel="stylesheet" href="{% static 'first/css/csskurcach.css' %}">
+    <title>Title</title>
+</head>
+<body>
+ <div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+    <h2 class="active"> Регистрация </h2>
+
+
+    <!-- Login Form -->
+
+
+<form method="post" action="{% url 'users:reg' %}">
+             {% csrf_token %}
+      <section class="section">
+        <main>
+          <form id="form-Register">
+              {{ form.username_real }}
+              {{ form.username }}
+             {{ form.password1 }}
+              {{ form.password2 }}
+               <input type="submit" class="fadeIn fourth" value="Создать аккаунт">
+          </form>
+
+
+    <!-- Remind Passowrd -->
+    <div id="formFooter">
+      <a href="{% url 'users:log' %}">Уже есть аккаунт?</a>
+    </div>
+
+</body>
+</html>
